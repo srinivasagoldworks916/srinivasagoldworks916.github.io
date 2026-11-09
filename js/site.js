@@ -4,7 +4,7 @@ const $ = id => document.getElementById(id);
 
 const GENERAL_MSG = "Hi! I'd love to know more about your jewellery collection.";
 
-['headerWa','heroWa','visitWa','fabWa'].forEach(id => {
+['headerWa','heroWa','visitWa','fabWa','closingWa'].forEach(id => {
   const el = $(id);
   if(el) el.href = waLink(GENERAL_MSG);
 });
@@ -91,6 +91,37 @@ function observeReveals(){
 /* Nothing stays invisible waiting on an observer. If it has not fired by now
    (unrendered tab, odd browser, a script that failed), show everything. */
 setTimeout(revealAll, 2500);
+
+/* Photos fade in as they arrive. Cached ones are already complete, so check
+   before listening, and fail open so an error never leaves a blank frame. */
+function fadeInImages(root){
+  (root || document).querySelectorAll('img:not(.is-loaded)').forEach(img => {
+    if(img.complete && img.naturalWidth > 0){ img.classList.add('is-loaded'); return; }
+    img.addEventListener('load',  () => img.classList.add('is-loaded'), { once:true });
+    img.addEventListener('error', () => img.classList.add('is-loaded'), { once:true });
+  });
+}
+fadeInImages();
+setTimeout(() => fadeInImages(), 3000);
+
+/* Back to top. The long galleries run to 122 pieces. */
+(function backToTop(){
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'to-top';
+  btn.setAttribute('aria-label', 'Back to top');
+  btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="1.6"><path d="M12 19V6M6 12l6-6 6 6"/></svg>';
+  btn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+  document.body.appendChild(btn);
+
+  let shown = false;
+  const update = () => {
+    const should = window.scrollY > window.innerHeight * 1.2;
+    if(should !== shown){ shown = should; btn.classList.toggle('is-shown', should); }
+  };
+  addEventListener('scroll', update, { passive:true });
+  update();
+})();
 
 /* Sticky header shadow once the page scrolls. */
 (function stickyHeader(){

@@ -64,6 +64,7 @@
     }).join('');
 
     observeReveals();
+    fadeInImages(gridEl);
   }
 
   gridEl.addEventListener('click', e => {
@@ -79,6 +80,7 @@
 
   if($('moreCats')){
     $('moreCats').innerHTML = categoryCardsHTML(liveCategories.filter(c => c.slug !== cat.slug));
+    fadeInImages($('moreCats'));
   }
 
   render();

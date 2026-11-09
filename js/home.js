@@ -4,6 +4,7 @@
   const el = $('catTiles');
   if(!el) return;
   el.innerHTML = categoryCardsHTML(liveCategories, { includeSoon:true });
+  fadeInImages(el);
 })();
 
 (function heroPhoto(){
