@@ -390,7 +390,15 @@ nav.catnav a[aria-current="page"]{ color:var(--navy); font-weight:500; }
   text-transform:uppercase; margin-top:6px; margin-bottom:20px;
 }
 .card-actions{ margin-top:auto; display:flex; flex-direction:column; gap:9px; }
-.card-actions .btn-wa, .card-actions .btn-ig{ justify-content:center; width:100%; }
+/* Card buttons sit in narrow columns, so they run tighter than the page-level
+   ones. The wipe needs overflow:hidden, which would otherwise clip the label. */
+.card-actions .btn-wa, .card-actions .btn-ig{
+  justify-content:center; width:100%;
+  padding:12px 10px; gap:7px;
+  font-size:.68rem; letter-spacing:.04em;
+  white-space:normal; text-align:center; line-height:1.35;
+}
+.card-actions .btn-wa svg, .card-actions .btn-ig svg{ width:13px; height:13px; }
 
 /* Secondary action: a hairline, so two CTAs never compete. */
 .btn-ig{
