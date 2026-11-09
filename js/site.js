@@ -77,11 +77,20 @@ if(!reduceMotion && 'IntersectionObserver' in window){
   }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
 }
 
+function revealAll(){
+  document.querySelectorAll('.reveal:not(.is-visible)')
+    .forEach(n => n.classList.add('is-visible'));
+}
+
 function observeReveals(){
   const nodes = document.querySelectorAll('.reveal:not(.is-visible)');
-  if(!revealObserver){ nodes.forEach(n => n.classList.add('is-visible')); return; }
+  if(!revealObserver){ revealAll(); return; }
   nodes.forEach(n => revealObserver.observe(n));
 }
+
+/* Nothing stays invisible waiting on an observer. If it has not fired by now
+   (unrendered tab, odd browser, a script that failed), show everything. */
+setTimeout(revealAll, 2500);
 
 /* Sticky header shadow once the page scrolls. */
 (function stickyHeader(){
