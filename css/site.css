@@ -184,10 +184,13 @@ nav.catnav a[aria-current="page"]{ color:var(--navy); font-weight:500; }
 .hero-bg{ position:absolute; inset:0; overflow:hidden; }
 .hero-bg img{
   position:absolute; inset:0;
-  width:100%; height:100%; object-fit:cover; object-position:center 28%;
+  width:100%; height:100%; object-fit:cover; object-position:center center;
   opacity:0; transform:scale(1.08);
   transition:opacity 1.5s var(--ease);
 }
+/* The detail crops are already 3:2 and sit centred. Only the full-length
+   portrait needs pulling up, or the banner lands on the saree. */
+.hero-bg img.is-portrait{ object-position:center 20%; }
 .hero-bg img.is-active{
   opacity:1; transform:scale(1);
   transition:opacity 1.5s var(--ease), transform 9s linear;
@@ -600,8 +603,7 @@ footer{ background:var(--navy-ink); color:#93A2B2; padding:52px 0 30px; font-siz
   :root{ --pad:20px; }
   .hero{ min-height:clamp(480px,70vh,620px); }
   .hero h1{ font-size:clamp(2.3rem,9vw,3.2rem); }
-  /* Portrait crop on a narrow screen: hold the subject higher in frame. */
-  .hero-bg img{ object-position:center 22%; }
+  .hero-bg img.is-portrait{ object-position:center 16%; }
   .hero-scrim{
     background:
       linear-gradient(to top, rgba(7,21,35,.95) 18%, rgba(7,21,35,.72) 55%, rgba(7,21,35,.45) 100%);
