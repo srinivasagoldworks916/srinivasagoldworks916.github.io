@@ -188,6 +188,38 @@ nav.catnav a[aria-current="page"]{ color:var(--navy); font-weight:500; }
   pointer-events:none;
 }
 .hero-frame img{ width:100%; height:100%; object-fit:cover; }
+
+/* Hero carousel: slides crossfade while the outgoing one keeps drifting,
+   so the frame is never static but never jumps either. */
+.hero-slides{ position:absolute; inset:0; overflow:hidden; }
+.hero-slides img{
+  position:absolute; inset:0;
+  width:100%; height:100%; object-fit:cover;
+  opacity:0; transform:scale(1.08);
+  transition:opacity 1.5s var(--ease);
+}
+.hero-slides img.is-active{
+  opacity:1;
+  transform:scale(1);
+  transition:opacity 1.5s var(--ease), transform 9s linear;
+}
+
+.hero-dots{
+  position:absolute; left:0; right:0; bottom:14px; z-index:2;
+  display:flex; justify-content:center; gap:9px;
+}
+.hero-dots button{
+  width:7px; height:7px; padding:0; border-radius:50%;
+  background:rgba(244,238,225,.42);
+  transition:background .4s var(--ease), transform .4s var(--ease);
+}
+.hero-dots button:hover{ background:rgba(244,238,225,.75); }
+.hero-dots button[aria-selected="true"]{ background:var(--gold-light); transform:scale(1.5); }
+
+@media (prefers-reduced-motion:reduce){
+  .hero-slides img{ transition:opacity .01ms; transform:none; }
+  .hero-slides img.is-active{ transform:none; transition:opacity .01ms; }
+}
 .hero-frame .frame-empty{ text-align:center; padding:20px; }
 .hero-frame .frame-empty svg{ width:52px; height:52px; margin:0 auto 14px; opacity:.85; }
 .hero-frame .frame-empty span{
