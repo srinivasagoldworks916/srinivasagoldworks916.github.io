@@ -11,17 +11,10 @@
   const wrap = $('heroSlides');
   if(!wrap) return;
 
-  /* A slide that fails to load is dropped, so a missing file never shows a
-     blank frame; if every one fails, fall back to the placeholder. */
-  const tpl = $('framePlaceholder');
+  /* A slide that fails to load is dropped. If every one fails the hero's own
+     navy gradient is still there, so the headline never loses its backdrop. */
   [...wrap.querySelectorAll('img')].forEach(img => {
-    const drop = () => {
-      img.remove();
-      if(!wrap.querySelector('img') && tpl){
-        wrap.insertAdjacentHTML('afterend', tpl.innerHTML);
-        wrap.remove();
-      }
-    };
+    const drop = () => img.remove();
     if(img.complete && img.naturalWidth === 0) drop();
     else img.addEventListener('error', drop, { once:true });
   });

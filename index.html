@@ -51,6 +51,13 @@
 <main id="top">
 
   <section class="hero">
+    <div class="hero-bg" id="heroSlides" aria-hidden="true">
+      <img class="is-active" src="images/hero/hero-1.jpg" fetchpriority="high" alt="">
+      <img src="images/hero/hero-2.jpg" loading="lazy" alt="">
+      <img src="images/hero/hero-3.jpg" loading="lazy" alt="">
+      <img src="images/hero/hero-4.jpg" loading="lazy" alt="">
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-inner">
       <div>
         <p class="eyebrow reveal">Est. Mangalagiri, Guntur District</p>
@@ -61,33 +68,9 @@
           <a class="btn-ghost" id="heroWa" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
         </div>
       </div>
-      <div class="hero-frame reveal" style="--d:340ms">
-        <div class="hero-slides" id="heroSlides">
-          <img class="is-active" src="images/hero.jpg" fetchpriority="high"
-               alt="A 22k gold temple necklace pendant with ruby and pearl detail">
-          <img src="images/hero/hero-1.jpg" loading="lazy"
-               alt="Temple jewellery styled with a silk saree">
-          <img src="images/hero/hero-2.jpg" loading="lazy"
-               alt="A layered gold haaram and waist belt over a silk saree">
-          <img src="images/hero/hero-3.jpg" loading="lazy"
-               alt="Antique-finish gold worn with a cream silk saree">
-          <img src="images/hero/hero-4.jpg" loading="lazy"
-               alt="Temple jewellery styled with a green silk saree">
-        </div>
-        <div class="hero-dots" id="heroDots" role="tablist" aria-label="Choose a picture"></div>
-      </div>
     </div>
+    <div class="hero-dots" id="heroDots" role="tablist" aria-label="Choose a picture"></div>
   </section>
-
-  <template id="framePlaceholder">
-    <div class="frame-empty">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M12 2 L4 9 L12 22 L20 9 Z" stroke="#E4C99A" stroke-width="1"/>
-        <path d="M4 9 H20 M8.5 9 L12 2 L15.5 9" stroke="#E4C99A" stroke-width=".7"/>
-      </svg>
-      <span>Photography coming soon</span>
-    </div>
-  </template>
 
   <section class="craft">
     <div class="wrap craft-grid">
