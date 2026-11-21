@@ -12,6 +12,15 @@
   const emptyStateEl  = $('emptyState');
   const all = productsFor(cat);
 
+  /* Counts come from the catalogue, so adding photos never leaves a stale
+     number baked into the page. */
+  if($('pageCount')){
+    $('pageCount').textContent = `${cat.count} designs · 22k gold · price on request`;
+  }
+  if($('emptyHint')){
+    $('emptyHint').textContent = `Try a different word, or clear the search to see all ${cat.count} designs.`;
+  }
+
   let searchTerm = "";
 
   function render(){

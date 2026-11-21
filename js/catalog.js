@@ -24,8 +24,13 @@ const CATALOGUE = [
     cover:"images/covers/stone-necklaces.jpg",
     blurb:"Ruby, emerald and pearl settings on light-weight gold frames — our widest range, added to most often." },
 
+  { category:"Kanti", slug:"kanti", id:"k", folder:"kanti", file:"kanti",
+    label:"Kanti", count:15, note:"",
+    cover:"images/covers/kanti.jpg",
+    blurb:"Rigid gold collars set with ruby, emerald and pearl drops — the traditional kanti, worn close at the neck." },
+
   { category:"Black Beads", slug:"black-beads", id:"bb", folder:"black-beads", file:"black-beads",
-    label:"Black Beads Design", count:122, note:"",
+    label:"Black Beads Design", count:132, note:"",
     cover:"images/covers/black-beads.jpg",
     blurb:"Mangalsutra and black-bead chains, from everyday short chains to heavier two-line designs." },
 
